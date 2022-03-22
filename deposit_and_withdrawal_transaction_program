@@ -1,0 +1,36 @@
+#Define the main function
+def main():
+    # Get account information and transaction.
+    name = input('Please enter the account name: ')
+    account_id = input('Please enter the account id: ')
+    transaction_code = input('Please enter W or w for Withdrawal, or Enter D or d for Deposit: ')  
+    previous_balance = float(input('Please enter the previous balance: '))
+    transaction_amount = float(input('Please enter the transaction amount: '))
+    
+    # Determine the transaction code.
+    if transaction_code == "W" or transaction_code == "w":
+        process_withdrawal(previous_balance, transaction_amount, name, account_id)  
+    elif transaction_code == "D" or transaction_code == "d":
+        process_deposit(previous_balance, transaction_amount, name, account_id) 
+    else:
+        print("Invalid transaction.")
+  
+def process_withdrawal(previous_balance, transaction_amount, name, account_id):
+    if transaction_amount > previous_balance:
+        print("withdraw exceeds available amount")  
+    else:
+        new_balance = previous_balance - transaction_amount
+        print_balance(name, account_id, new_balance)
+
+def process_deposit(previous_balance, transaction_amount, name, account_id):
+    new_balance = previous_balance + transaction_amount
+    if transaction_amount < previous_balance:
+        return print_balance(name, account_id, new_balance)             
+
+def print_balance(name, account_id, new_balance):
+    print("Hello", name)
+    print("Your account_id is:", account_id)
+    print("Your new balance is $", format(new_balance, ".2f"))
+      
+#call the main function
+main()
