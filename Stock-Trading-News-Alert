@@ -1,3 +1,6 @@
+# Built a Python script that gets the TSLA stock closing price of yesterday and the previous day, 
+# gets the trending news about Tesla and sends an SMS using Twilio API.
+
 import requests
 from twilio.rest import Client
 
